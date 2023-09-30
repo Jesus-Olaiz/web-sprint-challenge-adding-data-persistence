@@ -3,7 +3,14 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand --silent"
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand --silent",
+    "up": "npx knex migrate:up",
+    "down": "npx knex migrate:down",
+    "latest": "npx knex migrate:latest",
+    "rollback": "npx knex migrate:rollback",
+    "seed": "npx knex seed:run",
+    "resetdb": "npm run rollback && npm run latest && npm run seed",
+    "server": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +24,10 @@
     "supertest": "6.2.3"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "knex": "^2.5.1",
+    "nodemon": "^3.0.1",
     "sqlite3": "^5.0.8"
   }
 }
